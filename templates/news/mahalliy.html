@@ -1,0 +1,25 @@
+{% extends "news/base.html" %}
+{% load static %}
+
+{% block title %} Mahalliy yangiliklari {% endblock title %}
+
+
+{% block content %}
+
+<div class="post-container">
+<!-- Birinchi karta -->
+{% for news in mahalliy_yangiliklar %}
+<div class="post-card">
+    <a href="{{news.get_absolute_url}}"><img src="{{news.image.url}}" alt=""></a>
+    <div class="post-card-content">
+        <p>{{ news.publish_time}}</p>
+        <h3><a href="{{news.get_absolute_url}}">{{news.title}}</a></h3>
+        <p>{{ news.body | truncatewords:10 }}</p>
+    </div>
+</div>
+{% endfor %}
+
+</div>
+
+
+{% endblock content %}
